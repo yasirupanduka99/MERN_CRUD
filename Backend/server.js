@@ -10,7 +10,12 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = 8070 || process.env.PORT;
+//routes
+const ItemRouter = require('./routes/item.routes');
+//API Middleware
+app.use('/api/', ItemRouter);
+
+const PORT = process.env.PORT || 8070;
 app.listen(PORT, () => {
     console.log(`🚀 :: Server is up and running on PORT number: ${PORT}`);
     ConnectDB();
